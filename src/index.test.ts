@@ -1,5 +1,4 @@
-import prettion, { PrettionOptions } from './index';
-import chalk from 'chalk';
+import prettion from './index';
 
 // Mock chalk to prevent color codes in test output
 jest.mock('chalk', () => ({

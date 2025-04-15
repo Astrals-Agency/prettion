@@ -50,17 +50,17 @@ export function prettion(input: unknown, options: PrettionOptions = {}): string 
         const parsed = JSON.parse(input);
         jsonString = JSON.stringify(
           parsed, 
-          opts.sortKeys ? getSortingReplacer() as (key: string, value: any) => any : undefined, 
+          opts.sortKeys ? getSortingReplacer() : undefined, 
           opts.indent
         );
-      } catch (e) {
+      } catch (_) {
         // If parsing fails, just use the string as-is
         jsonString = input;
       }
     } else {
       jsonString = JSON.stringify(
         input, 
-        opts.sortKeys ? getSortingReplacer() as (key: string, value: any) => any : undefined, 
+        opts.sortKeys ? getSortingReplacer() : undefined, 
         opts.indent
       );
     }
@@ -72,7 +72,7 @@ export function prettion(input: unknown, options: PrettionOptions = {}): string 
     
     // Colorize the JSON
     return colorizeJson(jsonString);
-  } catch (error) {
+  } catch (_) {
     // If any error occurs, return the input as a string
     return String(input);
   }
@@ -82,12 +82,12 @@ export function prettion(input: unknown, options: PrettionOptions = {}): string 
  * Creates a replacer function for JSON.stringify that sorts keys alphabetically
  */
 function getSortingReplacer() {
-  return (key: string, value: any) => {
+  return (key: string, value: unknown) => {
     if (value && typeof value === 'object' && !Array.isArray(value)) {
       return Object.keys(value)
         .sort()
-        .reduce((result: Record<string, any>, key) => {
-          result[key] = value[key];
+        .reduce((result: Record<string, unknown>, key) => {
+          result[key] = (value as Record<string, unknown>)[key];
           return result;
         }, {});
     }
@@ -100,7 +100,7 @@ function getSortingReplacer() {
  */
 function colorizeJson(jsonString: string): string {
   return jsonString
-    .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, 
+    .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g, 
       (match) => {
         // Strings
         if (/^"/.test(match)) {
