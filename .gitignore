@@ -42,8 +42,9 @@ Thumbs.db
 # npm package files
 .npm
 .npmrc
+# package-lock.json - Commented out to include in repository
 yarn.lock
 
 # Cache
 .cache/
-.eslintcache 
+.eslintcache
