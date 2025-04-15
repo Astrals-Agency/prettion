@@ -1,5 +1,5 @@
 {
-  "name": "prettion",
+  "name": "@builtbyastrals/prettion",
   "version": "0.1.0",
   "description": "A simple utility to prettify JSON output for terminal debugging",
   "main": "dist/index.js",

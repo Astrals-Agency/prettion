@@ -5,15 +5,15 @@ A simple utility to prettify JSON output for terminal debugging with color suppo
 ## Installation
 
 ```bash
-npm install prettion
+npm install @builtbyastrals/prettion
 ```
 
 ## Usage
 
 ```javascript
-const prettion = require('prettion');
+const prettion = require('@builtbyastrals/prettion').default;
 // or using ES modules
-// import prettion from 'prettion';
+// import prettion from '@builtbyastrals/prettion';
 
 // Example usage with an API response object
 const response = {
