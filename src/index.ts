@@ -53,7 +53,8 @@ export function prettion(input: unknown, options: PrettionOptions = {}): string 
           opts.sortKeys ? getSortingReplacer() : undefined, 
           opts.indent
         );
-      } catch (_) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (_error) {
         // If parsing fails, just use the string as-is
         jsonString = input;
       }
@@ -72,7 +73,8 @@ export function prettion(input: unknown, options: PrettionOptions = {}): string 
     
     // Colorize the JSON
     return colorizeJson(jsonString);
-  } catch (_) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (_error) {
     // If any error occurs, return the input as a string
     return String(input);
   }

@@ -12,7 +12,9 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-unused-vars': ['error', { 
       argsIgnorePattern: '^_',
-      varsIgnorePattern: '^_'
+      varsIgnorePattern: '^_',
+      destructuredArrayIgnorePattern: '^_',
+      caughtErrorsIgnorePattern: '^_'
     }],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
