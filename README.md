@@ -2,6 +2,10 @@
 
 A simple utility to prettify JSON output for terminal debugging with color support.
 
+## Requirements
+
+- Node.js >= 18.0.0
+
 ## Installation
 
 ```bash
